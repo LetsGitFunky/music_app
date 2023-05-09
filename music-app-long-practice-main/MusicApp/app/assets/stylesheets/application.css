@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+
+ head {
+    color: chartreuse;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: midnightblue;
+ }
+
+ h1 {
+    display: flex;
+    background-color: aquamarine;
+ }
+
+ a {
+    background-color: midnightblue;
+    color:aliceblue;
+    border-radius: 20px;
+    display: inline-block;
+    text-align: center;
+ }
+
+ body {
+    font-family: Arial, Helvetica, sans-serif;
+ }
