@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     end
 
     def require_logged_out
-        redirect_to user_url if logged_in?
+        redirect_to user_url(current_user.id) if logged_in?
     end
 
     def login!(user)
@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
     end
 
     def logout!
-        current_user.reset_session_token! if logged_in
+        current_user.reset_session_token! if logged_in?
         session[:session_token] = nil
         @current_user = nil
     end

@@ -4,11 +4,6 @@ class UsersController < ApplicationController
         # can only see this pages if logged in
         before_action :require_logged_in, only: [:show]
 
-    def index
-        @users = User.all
-        render :index
-    end
-
     def show
         @user = User.find(params[:id])
         render :show
@@ -23,7 +18,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             login!(@user)
-            redirect_to user_url
+            redirect_to user_url(@user.id)
         else
             flash.now[:errors] = @user.errors.full_messages
             render :new
@@ -33,6 +28,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:email, :session_token, :password_digest)
+        params.require(:user).permit(:email, :password)
     end
 end
